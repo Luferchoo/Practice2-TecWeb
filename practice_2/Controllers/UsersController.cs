@@ -8,19 +8,23 @@ namespace practice_2.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public UserManager _usermanager = new UserManager();
+        private UserManager _usermanager;
+        public UsersController(UserManager userManager)
+        {
+            _usermanager = userManager;
+        }
 
         [HttpGet]
         public IActionResult GetUsers()
         {
-            var UserList = _usermanager.GetUsers();
-            return Ok(UserList);
+           // var UserList = _usermanager.GetUsers();
+            return Ok(_usermanager.GetUsers());
         }
 
         [HttpPost]
-        public IActionResult PostUsers()
+        public IActionResult PostUsers(User user)
         {
-            return Ok();
+            return Ok(_usermanager.PostUsers(user));
         }
 
         [HttpPut]

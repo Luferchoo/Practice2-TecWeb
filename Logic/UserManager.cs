@@ -21,6 +21,11 @@ namespace Logic
         {
             return Users;
         }
+        public User PostUsers(User user)
+        {
+            Users.Add(user);
+            return user;
+        }
 
     }
 }
