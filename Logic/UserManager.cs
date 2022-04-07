@@ -17,6 +17,10 @@ namespace Logic
                 new User() { Ci = 54297, Name = "Rene"},
             };
         }
-        
+        public List<User> GetUsers()
+        {
+            return Users;
+        }
+
     }
 }
