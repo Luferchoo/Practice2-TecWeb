@@ -28,11 +28,16 @@ namespace Logic
         }
         public User PutUsers(User user)
         {
+            User userToUpdate = Users.Find(x => x.Ci == user.Ci);
+            userToUpdate.Name = user.Name;
+            userToUpdate.Ci = user.Ci;
             return user;
         }
         public User DeleteUsers(User user)
         {
-            return user;
+            User userfound = Users.Find(u => u.Name == user.Name);
+            Users.Remove(userfound);
+            return userfound;
         }
 
 
