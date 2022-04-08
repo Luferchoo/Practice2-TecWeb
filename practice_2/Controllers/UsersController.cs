@@ -8,35 +8,34 @@ namespace practice_2.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private UserManager _usermanager;
-        public UsersController(UserManager userManager)
+        private IUserManager _userManager;
+        public UsersController(IUserManager userManager)
         {
-            _usermanager = userManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
         public IActionResult GetUsers()
         {
-           // var UserList = _usermanager.GetUsers();
-            return Ok(_usermanager.GetUsers());
+            return Ok(_userManager.GetUsers());
         }
 
         [HttpPost]
         public IActionResult PostUsers(User user)
         {
-            return Ok(_usermanager.PostUsers(user));
+            return Ok(_userManager.PostUsers(user));
         }
 
         [HttpPut]
-        public IActionResult PutUsers()
+        public IActionResult PutUsers(User user)
         {
-            return Ok();
+            return Ok(_userManager.PutUsers(user));
         }
 
         [HttpDelete]
-        public IActionResult DeleteUsers()
+        public IActionResult DeleteUsers(User user)
         {
-            return Ok();
+            return Ok(_userManager.DeleteUsers(user));
         }
     }
 }
