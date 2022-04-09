@@ -23,15 +23,24 @@ namespace Logic
         }
         public User PostUsers(User user)
         {
-            Users.Add(user);
-            return user;
+            User userfound = Users.Find(u => u.Ci == user.Ci);
+            if (userfound == null)
+            {
+                Users.Add(user);
+                return user;
+            }
+            return null;
         }
         public User PutUsers(User user)
         {
             User userToUpdate = Users.Find(x => x.Ci == user.Ci);
-            userToUpdate.Name = user.Name;
-            userToUpdate.Ci = user.Ci;
-            return user;
+            if (userToUpdate != null)
+            {
+                userToUpdate.Name = user.Name;
+                userToUpdate.Ci = user.Ci;
+                return user;
+            }
+            return null;
         }
         public User DeleteUsers(User user)
         {
